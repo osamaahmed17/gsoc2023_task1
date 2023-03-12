@@ -1,4 +1,4 @@
-# gsoc2023_task1
+# Google Summer of Code 2023 - Query Weather
 
 [![Github Actions Status](https://github.com/osamaahmed17/gsoc2023_task1/workflows/Build/badge.svg)](https://github.com/osamaahmed17/gsoc2023_task1/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/osamaahmed17/gsoc2023_task1/main?urlpath=lab)
 This extension displays the weather for a city given by the user. It allows the user to search for a city through querying the weather API
