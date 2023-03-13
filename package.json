@@ -1,6 +1,6 @@
 {
   "name": "gsoc2023_task1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This extension displays the weather for a city given by the user. It allows the user to search for a city through querying the weather API",
   "keywords": [
     "jupyter",
