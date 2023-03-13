@@ -5,10 +5,6 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-
-
-
-
 /**
  * React component for a weather.
  *
@@ -20,9 +16,6 @@ let sideBarStyle = {
     width: 220,
     left: 70
 }
-
-
-
 
 interface Weather {
     weather: (WeatherEntity)[]
@@ -40,9 +33,9 @@ interface Main {
 }
 
 
-
 const WeatherComponent = (): JSX.Element => {
     const [currentCity, setCity] = useState('');
+
     const [apiResult, setResult] = useState<Weather>({
         weather: [{ main: '', description: '' }],
         main: {
@@ -51,9 +44,7 @@ const WeatherComponent = (): JSX.Element => {
 
     });
     const [errorResult, setError] = useState('');
-
-
-    async function getWeather() {
+    async function getWeather(this: any) {
 
         var getCity = currentCity
         var firstCharacter = getCity.substring(0, 1);
@@ -62,29 +53,33 @@ const WeatherComponent = (): JSX.Element => {
         }
         if (getCity !== '') {
             let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=' + getCity + '&APPID=dbf00d7a4d89a57ebdfde37bc29c465b&units=metric');
-            if (response.ok) {
+            console.log(response.ok)
+            if (response.ok === true) {
                 const data = await response.json() as Weather;
                 setResult(data);
+                setError('')
 
             }
-            else {
+            else if (response.ok === false) {
                 let error = "Enter Correct City Name"
                 setError(error)
+                const data = {
+                    weather: [{ main: '', description: '' }],
+                    main: {
+                        temp: 0
+                    }
+                }
+                setResult(data);
             }
-
         }
 
+    }
 
-
-
-    };
     function handleChangeFullName(event: React.ChangeEvent<HTMLInputElement>) {
         setCity(event.target.value)
     }
 
     let tableView;
-
-
     if (apiResult.weather[0].main !== '') {
         tableView =
             <table className="table table-dark">
@@ -103,7 +98,6 @@ const WeatherComponent = (): JSX.Element => {
             </table>
     }
     else if (errorResult !== '') {
-
         tableView = <table className="table table-dark">
             <tbody>
                 <tr>
@@ -112,10 +106,7 @@ const WeatherComponent = (): JSX.Element => {
             </tbody>
         </table>
     }
-
-
     return (
-
         <div style={sideBarStyle}>
             <Card interactive={true} elevation={Elevation.TWO}>
                 <h4>Query Weather</h4>
@@ -127,28 +118,19 @@ const WeatherComponent = (): JSX.Element => {
                 </FormGroup>
                 <button type="button" className="btn btn-success" onClick={() => getWeather()}>Submit</button>
             </Card>
-
             {tableView}
         </div>
-
-
-
     );
 };
 
-/**
- * A Counter Lumino Widget that wraps a CounterComponent.
- */
+
 export class WeatherWidget extends ReactWidget {
-    /**
-     * Constructs a new CounterWidget.
-     */
     constructor() {
         super();
         this.addClass('jp-ReactWidget');
     }
 
-    render(): JSX.Element {
+    render(): React.ReactElement<any> {
         return <WeatherComponent />;
     }
 }

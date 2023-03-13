@@ -1,14 +1,5 @@
 from ._version import __version__
-from ipylab import JupyterFrontEnd
-
-
-def main():
-   app = JupyterFrontEnd()
-   print(app)
-
-
-if __name__ == "__main__":
-    main()
+from ._readingKernel import *
 
 def _jupyter_labextension_paths():
     return [{
