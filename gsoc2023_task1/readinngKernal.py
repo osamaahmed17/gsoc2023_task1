@@ -1,0 +1,2 @@
+def kernal():
+    print("OSsama")
