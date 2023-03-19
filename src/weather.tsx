@@ -5,6 +5,8 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+
+
 /**
  * React component for a weather.
  *

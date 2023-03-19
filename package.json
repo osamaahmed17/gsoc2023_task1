@@ -57,10 +57,11 @@
   "dependencies": {
     "@blueprintjs/core": "^4.17.6",
     "@blueprintjs/table": "^4.9.1",
-    "@jupyterlab/application": "^3.6.1",
-    "@jupyterlab/apputils": "^3.6.1",
+    "@jupyterlab/application": "3.5.3",
+    "@jupyterlab/apputils": "3.5.3",
     "@lumino/widgets": "^1.37.1",
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "react-devtools": "^4.27.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

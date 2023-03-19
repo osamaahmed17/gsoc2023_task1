@@ -1,10 +1,10 @@
 from ._version import __version__
-from ._readingKernel import *
+from .readingKernel import *
+
 
 def _jupyter_labextension_paths():
-    return [{
-        "src": "labextension",
-        "dest": "gsoc2023_task1"
-    }]
-
+    return [dict(
+                src= "labextension",
+                dest= "gsoc2023_task1")
+            ]
 
